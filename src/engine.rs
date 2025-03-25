@@ -1,3 +1,4 @@
+use crate::utils;
 use crate::piece::*;
 use crate::board::*;
 
@@ -34,7 +35,7 @@ impl Engine {
                 history: Vec::new(),
 
                 castling_flags: 0,
-                en_passant_square: 0,
+                en_passant_square: 64,
 
                 bitboards: [0; Piece::PieceCount as usize],
                 mailbox:   [None; 64],
@@ -83,13 +84,13 @@ impl Engine {
             engine.board.en_passant_square = 64;
         }
         else {
-            //engine.board.en_passant_square = square_from_uci(fen[3]);
+            engine.board.en_passant_square = utils::square_from_uci(&fen[3]);
         }
 
         engine
     }
 
-    // Should only be used when initializing with FEN
+    // Should only be used when initializing (such as with FEN)
     pub fn set_color(&mut self, is_white: bool) {
         self.is_white_turn = is_white;
 

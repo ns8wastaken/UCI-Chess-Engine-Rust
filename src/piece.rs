@@ -24,6 +24,19 @@ impl From<u8> for PieceType {
     }
 }
 
+impl From<char> for PieceType {
+    fn from(value: char) -> Self {
+        match value.to_ascii_lowercase() {
+            'p' => PieceType::Pawn,
+            'n' => PieceType::Knight,
+            'b' => PieceType::Bishop,
+            'r' => PieceType::Rook,
+            'q' => PieceType::Queen,
+            'k' => PieceType::King,
+            _ => panic!(),
+        }
+    }
+}
 
 #[repr(u8)]
 #[derive(Clone, Copy)]
@@ -59,7 +72,7 @@ impl From<u8> for Piece {
             9  => Piece::BQueen,
             10 => Piece::WKing,
             11 => Piece::BKing,
-            _ => panic!(),
+            _  => panic!(),
         }
     }
 }
@@ -79,7 +92,7 @@ impl From<char> for Piece {
             'q'  => Piece::BQueen,
             'K' => Piece::WKing,
             'k' => Piece::BKing,
-            _ => panic!(),
+            _  => panic!(),
         }
     }
 }

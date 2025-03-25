@@ -16,5 +16,4 @@ fn main() {
     ];
 
     let engine = Engine::from_fen(&v);
-    println!("{}", engine.is_white_turn);
 }

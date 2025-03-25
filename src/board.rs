@@ -8,10 +8,10 @@ pub type Mailbox = [Option<Piece>; 64];
 pub type Square = u8;
 
 
-struct Move {
+pub struct Move {
     pub from:                 u8,
     pub to:                   u8,
-    pub promotion_piece_type: PieceType,
+    pub promotion_piece_type: Option<PieceType>,
     pub is_castle:            bool,
 }
 
